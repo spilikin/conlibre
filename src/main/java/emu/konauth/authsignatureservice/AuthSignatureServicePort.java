@@ -1,4 +1,4 @@
-package de.gematik.emu.konauth.authsignatureservice;
+package emu.konauth.authsignatureservice;
 
 import oasis.names.tc.dss._1_0.core.schema.Base64Signature;
 import oasis.names.tc.dss._1_0.core.schema.SignatureObject;

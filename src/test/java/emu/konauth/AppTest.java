@@ -1,4 +1,4 @@
-package de.gematik.emu.konauth;
+package emu.konauth;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
