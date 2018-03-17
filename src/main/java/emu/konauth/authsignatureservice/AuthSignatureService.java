@@ -1,5 +1,6 @@
 package emu.konauth.authsignatureservice;
 
+import emu.konauth.Version;
 import oasis.names.tc.dss._1_0.core.schema.Base64Signature;
 import oasis.names.tc.dss._1_0.core.schema.SignatureObject;
 import oasis.names.tc.dss._1_0.core.schema.Timestamp;
@@ -13,23 +14,32 @@ import telematik.ws.conn.signatureservice.v7_4.ObjectFactory;
 import javax.jws.WebService;
 import java.util.Base64;
 
+@Version("7.4.0")
 @WebService(
         targetNamespace = "http://ws.gematik.de/conn/AuthSignatureService/WSDL/v7.4",
-        name = "AuthSignatureServicePortType"
+        name = "AuthSignatureService"
 )
-public class AuthSignatureServicePort implements AuthSignatureServicePortType {
+public class AuthSignatureService implements AuthSignatureServicePortType {
     @Override
     public ExternalAuthenticateResponse externalAuthenticate(ExternalAuthenticate externalAuthenticate) throws FaultMessage {
 
         try {
             byte[] base64bytes = externalAuthenticate.getBinaryString().getBase64Data().getValue();
-            String str = new String(Base64.getDecoder().decode(base64bytes));
+            byte[] bytesToSign = Base64.getDecoder().decode(base64bytes);
             ObjectFactory objectFactory = new ObjectFactory();
             ExternalAuthenticateResponse response = objectFactory.createExternalAuthenticateResponse();
             SignatureObject signatureObject = new SignatureObject();
             signatureObject.setBase64Signature(new Base64Signature());
             signatureObject.setTimestamp(new Timestamp());
-            signatureObject.getBase64Signature().setValue(str.getBytes());
+
+            byte[] signedBytes = new byte[bytesToSign.length];
+            int pos = signedBytes.length-1;
+
+            for (byte b : bytesToSign) {
+                signedBytes[pos--] = b;
+            }
+
+            signatureObject.getBase64Signature().setValue(Base64.getEncoder().encode(signedBytes));
             response.setSignatureObject(signatureObject);
             return response;
         } catch (Exception e) {

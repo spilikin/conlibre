@@ -9,8 +9,17 @@ Toolchain installation
 ```
 
 
-Run the Emulator from command line
+Using the Emulator
 ==================================
+
+Start the Emulator from command line
+------------------------------------
 ```
     mvn spring-boot:run
+```
+
+Get Service Directory
+---------------------
+```
+    curl -i http://fraqir:9095/connector.sds
 ```

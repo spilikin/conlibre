@@ -1,6 +1,6 @@
 package emu.konauth;
 
-import emu.konauth.authsignatureservice.AuthSignatureServicePort;
+import emu.konauth.authsignatureservice.AuthSignatureService;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.ext.logging.LoggingFeature;
@@ -25,8 +25,16 @@ public class App {
     }
 
     @Bean
-    public ServletRegistrationBean dispatcherServlet() {
+    public ServletRegistrationBean soapServlet() {
         return new ServletRegistrationBean<CXFServlet>(new CXFServlet(), "/soap-api/*");
+    }
+
+    @Bean
+    public LoggingFeature loggingFeature() {
+        LoggingFeature logFeature = new LoggingFeature();
+        logFeature.setPrettyLogging(true);
+        logFeature.initialize(springBus());
+        return logFeature;
     }
 
     @Bean(name= Bus.DEFAULT_BUS_ID)
@@ -35,21 +43,21 @@ public class App {
     }
 
     @Bean
-    public AuthSignatureServicePort authSignatureService() {
-        return new AuthSignatureServicePort();
+    public AuthSignatureService authSignatureService() {
+        return new AuthSignatureService();
     }
 
     @Bean
-    public Endpoint endpoint() {
-        EndpointImpl endpoint = new EndpointImpl(springBus(), authSignatureService());
-        endpoint.publish("/AuthSignatureService/7.4");
-
-        LoggingFeature logFeature = new LoggingFeature();
-        logFeature.setPrettyLogging(true);
-        logFeature.initialize(springBus());
-        endpoint.getFeatures().add(logFeature);
-
-        return endpoint;
+    public Endpoint authSignatureServiceEndpoint() {
+        return publishService(authSignatureService());
     }
 
+    private Endpoint publishService(Object service) {
+        ConnectorServiceHelper.ServiceInfo serviceInfo = ConnectorServiceHelper.info(service);
+        EndpointImpl endpoint = new EndpointImpl(springBus(), authSignatureService());
+        endpoint.publish(serviceInfo.path());
+
+        return endpoint;
+
+    }
 }
