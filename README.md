@@ -12,6 +12,19 @@ Toolchain installation
 Using the Emulator
 ==================================
 
+Quickstart
+----------
+
+'''
+    cd /tmp
+    git clone git@bitbucket.org:spilikin/telematik-jaxws.git
+    (cd telematik-jaxws;mvn clean install)
+    git clone git@bitbucket.org:spilikin/emu-konauth.git
+    cd emu-konauth
+    mvn clean test
+    mvn spring-boot:run
+'''
+
 Start the Emulator from command line
 ------------------------------------
 ```
