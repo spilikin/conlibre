@@ -2,7 +2,7 @@ package emu.konauth;
 
 import javax.jws.WebService;
 
-public class ConnectorServiceHelper {
+public class ServiceHelper {
     public static class ServiceInfo {
         private String version;
         private String name;

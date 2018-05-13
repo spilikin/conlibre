@@ -1,6 +1,9 @@
 package emu.konauth;
 
 import emu.konauth.authsignatureservice.AuthSignatureService;
+import emu.konauth.cardservice.CardService_v8_1_1;
+import emu.konauth.cardservice.CardService_v8_1_2;
+import emu.konauth.eventservice.EventService;
 import emu.softcard.FileSoftcardBuilder;
 import emu.softcard.Softcard;
 import org.apache.cxf.Bus;
@@ -9,6 +12,8 @@ import org.apache.cxf.ext.logging.LoggingFeature;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -17,8 +22,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.security.Security;
@@ -31,6 +34,7 @@ import java.util.Map;
 @SpringBootApplication
 public class App {
 
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -55,20 +59,22 @@ public class App {
     }
 
     @Bean
-    public AuthSignatureService authSignatureService() {
-        return new AuthSignatureService();
-    }
-
-    @Bean
     public Map<String, Softcard> cards() throws IOException {
 
         ClassLoader cl = this.getClass().getClassLoader();
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
-        Resource[] resources = resolver.getResources("classpath*:/softcards/*");
+        Resource[] resources = resolver.getResources("file:./config/cards/*");
+
+
+        if (resources.length == 0) {
+            throw new IOException("No softcards found");
+        }
 
         Map<String, Softcard> result = new HashMap<>();
         FileSoftcardBuilder builder = new FileSoftcardBuilder();
         for (Resource resource : resources) {
+            log.info(resource.toString());
+
             Softcard softcard = builder.build(resource.getFile());
             result.put(softcard.getName(), softcard);
         }
@@ -77,13 +83,54 @@ public class App {
     }
 
     @Bean
+    public AuthSignatureService authSignatureService() {
+        return new AuthSignatureService();
+    }
+
+    @Bean
     public Endpoint authSignatureServiceEndpoint() {
         return publishService(authSignatureService());
     }
 
     @Bean
-    public DatatypeFactory datatypeFactory() throws DatatypeConfigurationException {
-        return DatatypeFactory.newInstance();
+    public EventService eventService() {
+        return new EventService();
+    }
+
+    @Bean
+    public Endpoint eventServiceEndpoint() {
+        return publishService(eventService());
+    }
+
+
+    @Bean
+    public CardService_v8_1_1 cardService_v8_1_1() {
+        return new CardService_v8_1_1();
+    }
+
+    @Bean
+    public Endpoint cardService_v8_1_1_Endpoint() {
+        return publishService(cardService_v8_1_1());
+    }
+
+    @Bean
+    public CardService_v8_1_2 cardService_v8_1_2() {
+        return new CardService_v8_1_2();
+    }
+
+    @Bean
+    public Endpoint cardService_v8_1_2_Endpoint() {
+        return publishService(cardService_v8_1_2());
+    }
+
+
+    private Endpoint publishService(Object service) {
+        ServiceHelper.ServiceInfo serviceInfo = ServiceHelper.info(service);
+        EndpointImpl endpoint = new EndpointImpl(springBus(), service);
+        endpoint.publish(serviceInfo.path());
+
+        return endpoint;
+
     }
 
     @Bean
@@ -93,12 +140,4 @@ public class App {
         return provider;
     }
 
-    private Endpoint publishService(Object service) {
-        ConnectorServiceHelper.ServiceInfo serviceInfo = ConnectorServiceHelper.info(service);
-        EndpointImpl endpoint = new EndpointImpl(springBus(), authSignatureService());
-        endpoint.publish(serviceInfo.path());
-
-        return endpoint;
-
-    }
 }

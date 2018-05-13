@@ -2,8 +2,6 @@ package emu.softcard;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
 
@@ -11,11 +9,6 @@ public class FileSoftcardBuilder {
 
     public FileSoftcardBuilder() {
 
-    }
-
-    public Softcard build(URL baseURL) throws IOException, URISyntaxException {
-        // this will fail if URL is not file://
-        return build(new File(baseURL.toURI()));
     }
 
     public Softcard build(File basedir) throws IOException {
