@@ -1,6 +1,6 @@
-package emu.konauth.emu.konauth.servicedirectory;
+package emu.konauth.servicedirectory;
 
-import emu.konauth.ConnectorServiceHelper;
+import emu.konauth.ServiceHelper;
 import emu.konauth.Version;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -43,7 +43,7 @@ public class ServiceDirectoryController {
         ApplicationContext applicationContext = (ApplicationContext)contextRefreshedEvent.getSource();
         Map<String, Object> webServices = applicationContext.getBeansWithAnnotation(WebService.class);
         for (Object webservice:webServices.values()) {
-            ConnectorServiceHelper.ServiceInfo serviceInfo = ConnectorServiceHelper.info(webservice);
+            ServiceHelper.ServiceInfo serviceInfo = ServiceHelper.info(webservice);
             ServiceType service = new ServiceType();
             service.setName(serviceInfo.name());
             VersionType version = new VersionType();
