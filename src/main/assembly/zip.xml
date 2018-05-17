@@ -9,15 +9,15 @@
     <fileSets>
         <fileSet>
             <directory>${project.build.directory}</directory>
-            <outputDirectory>emu-konauth-${project.version}</outputDirectory>
+            <outputDirectory>telematik-konemu-${project.version}</outputDirectory>
             <includes>
-                <include>emu-konauth-*.jar</include>
+                <include>telematik-konemu-*.jar</include>
             </includes>
         </fileSet>
 
         <fileSet>
             <directory>${project.basedir}/config/</directory>
-            <outputDirectory>emu-konauth-${project.version}/config</outputDirectory>
+            <outputDirectory>telematik-konemu-${project.version}/config</outputDirectory>
             <includes>
                 <include>**/*</include>
             </includes>

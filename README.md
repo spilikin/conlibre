@@ -17,10 +17,10 @@ Quickstart
 
 ```
     cd /tmp
-    git clone git@bitbucket.org:spilikin/telematik-jaxws.git
+    git clone git@github.com:spilikin/telematik-jaxws.git
     (cd telematik-jaxws;mvn clean install)
-    git clone git@bitbucket.org:spilikin/emu-konauth.git
-    cd emu-konauth
+    git clone git@github.com:spilikin/telematik-konemu.git
+    cd telematik-konemu
     mvn clean test
     mvn spring-boot:run
 ```
@@ -34,5 +34,5 @@ Start the Emulator from command line
 Get Service Directory
 ---------------------
 ```
-    curl -i http://fraqir:9095/connector.sds
+    curl -i http://localhost:9095/connector.sds
 ```
