@@ -82,8 +82,6 @@ public class AuthSignatureService implements AuthSignatureServicePortType {
         ExternalAuthenticateResponse response = objectFactory.createExternalAuthenticateResponse();
         SignatureObject signatureObject = new SignatureObject();
         signatureObject.setBase64Signature(new Base64Signature());
-        signatureObject.setTimestamp(new Timestamp());
-
 
         response.setStatus(new Status());
         response.getStatus().setResult("OK");
