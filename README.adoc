@@ -1,12 +1,35 @@
-Toolchain installation
-======================
+= Con Libre: simple API simulator for gematik Konnektor
+
+== Usage
+
+----
+gradle clean 
+gradle bootRun
+----
+
+.Access ServiceDirectory
+____
+curl -i http://localhost:8080/connector.sds
+----
+
+== Development
+
+=== Toolchain installation
 
 1. (optional) Install SDKMAN from http://sdkman.io
-2. Install Java and Maven
-```
-    sdk install java
-    sdk install maven
-```
+2. Install Java 11 and Gradle
+----
+sdk install java
+sdk install gradle
+----
+
+=== Self-signed certificates
+
+----
+openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 1825
+openssl pkcs8 -topk8 -inform PEM -in key.pem -out privatekey.pem -nocrypt
+----
+
 
 
 Using the Emulator
