@@ -1,4 +1,4 @@
-package emu.konauth;
+package dev.spilikin.conlibre;
 
 public enum KonnektorError {
     E4000(4000, Type.Technical, Severity.Error, "Syntaxfehler"),

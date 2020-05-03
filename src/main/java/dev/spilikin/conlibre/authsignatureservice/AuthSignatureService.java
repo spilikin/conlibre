@@ -1,20 +1,19 @@
-package emu.konauth.authsignatureservice;
+package dev.spilikin.conlibre.authsignatureservice;
 
-import emu.konauth.ErrorMessage;
-import emu.konauth.KonnektorError;
-import emu.konauth.Version;
-import emu.softcard.CryproUtil;
-import emu.softcard.PrivateKeyObject;
-import emu.softcard.Softcard;
+import de.gematik.ws.conn.authsignatureservice.wsdl.v7_4.AuthSignatureServicePortType;
+import de.gematik.ws.conn.authsignatureservice.wsdl.v7_4.FaultMessage;
+import de.gematik.ws.conn.connectorcommon.v5.Status;
+import de.gematik.ws.conn.signatureservice.v7.ExternalAuthenticate;
+import de.gematik.ws.conn.signatureservice.v7.ExternalAuthenticateResponse;
+import de.gematik.ws.conn.signatureservice.v7.ObjectFactory;
+import dev.spilikin.conlibre.ErrorMessage;
+import dev.spilikin.conlibre.KonnektorError;
+import dev.spilikin.conlibre.Version;
+import dev.spilikin.conlibre.softcard.CryproUtil;
+import dev.spilikin.conlibre.softcard.PrivateKeyObject;
+import dev.spilikin.conlibre.softcard.Softcard;
 import oasis.names.tc.dss._1_0.core.schema.Base64Signature;
 import oasis.names.tc.dss._1_0.core.schema.SignatureObject;
-import oasis.names.tc.dss._1_0.core.schema.Timestamp;
-import telematik.ws.conn.authsignatureservice.wsdl.v7_4.AuthSignatureServicePortType;
-import telematik.ws.conn.authsignatureservice.wsdl.v7_4.FaultMessage;
-import telematik.ws.conn.connectorcommon.v5_0.Status;
-import telematik.ws.conn.signatureservice.v7_4.ExternalAuthenticate;
-import telematik.ws.conn.signatureservice.v7_4.ExternalAuthenticateResponse;
-import telematik.ws.conn.signatureservice.v7_4.ObjectFactory;
 
 import javax.annotation.Resource;
 import javax.jws.WebService;

@@ -1,12 +1,12 @@
-package emu.konauth.cardservice;
+package dev.spilikin.conlibre.cardservice;
 
-import emu.konauth.ErrorMessage;
-import emu.konauth.KonnektorError;
-import emu.konauth.Version;
-import telematik.ws.conn.cardservice.v8_1.*;
-import telematik.ws.conn.cardservice.wsdl.v8_1_1.CardServicePortType;
-import telematik.ws.conn.cardservice.wsdl.v8_1_1.FaultMessage;
-import telematik.ws.conn.cardservicecommon.v2_0.PinResponseType;
+import de.gematik.ws.conn.cardservice.v8.*;
+import de.gematik.ws.conn.cardservice.wsdl.v8_1.CardServicePortType;
+import de.gematik.ws.conn.cardservice.wsdl.v8_1.FaultMessage;
+import de.gematik.ws.conn.cardservicecommon.v2.PinResponseType;
+import dev.spilikin.conlibre.ErrorMessage;
+import dev.spilikin.conlibre.KonnektorError;
+import dev.spilikin.conlibre.Version;
 
 import javax.annotation.Resource;
 import javax.jws.WebService;
@@ -20,9 +20,18 @@ public class CardService_v8_1_1 implements CardServicePortType {
     @Resource
     private CardService_v8_1_2 cardService_v8_1_2;
 
-
     @Override
     public PinResponseType changePin(ChangePin changePin) throws FaultMessage {
+        throw new FaultMessage("Not implemented", new ErrorMessage(KonnektorError.E4000));
+    }
+
+    @Override
+    public PinResponseType enablePin(EnablePin parameter) throws FaultMessage {
+        throw new FaultMessage("Not implemented", new ErrorMessage(KonnektorError.E4000));
+    }
+
+    @Override
+    public PinResponseType disablePin(DisablePin parameter) throws FaultMessage {
         throw new FaultMessage("Not implemented", new ErrorMessage(KonnektorError.E4000));
     }
 

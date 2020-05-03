@@ -1,7 +1,9 @@
-package emu.konauth.servicedirectory;
+package dev.spilikin.conlibre.servicedirectory;
 
-import emu.konauth.ServiceHelper;
-import emu.konauth.Version;
+import de.gematik.ws.conn.servicedirectory.v3.ConnectorServices;
+import de.gematik.ws.conn.serviceinformation.v2.*;
+import dev.spilikin.conlibre.ServiceHelper;
+import dev.spilikin.conlibre.Version;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -9,8 +11,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import telematik.ws.conn.servicedirectory.v3_1.ConnectorServices;
-import telematik.ws.conn.serviceinformation.v2_0.*;
 
 import javax.jws.WebService;
 import java.net.*;

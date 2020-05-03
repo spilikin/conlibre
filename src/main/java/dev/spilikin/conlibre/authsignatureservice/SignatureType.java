@@ -1,4 +1,4 @@
-package emu.konauth.authsignatureservice;
+package dev.spilikin.conlibre.authsignatureservice;
 
 public enum SignatureType {
     PKCS1("urn:ietf:rfc:3447");
