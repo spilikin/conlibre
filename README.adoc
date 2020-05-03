@@ -16,12 +16,15 @@ gradle clean
 gradle bootRun
 ----
 
-.Access ServiceDirectory
+== Access ServiceDirectory
+
+=== Request
 ----
 curl -i http://localhost:8080/connector.sds
 ----
 
-[source,xml,linenums,highlight=2..5]
+=== Response
+[source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:ConnectorServices xmlns="http://ws.gematik.de/int/version/ProductInformation/v1.1" xmlns:ns2="http://ws.gematik.de/conn/ServiceDirectory/v3.1" xmlns:ns3="http://ws.gematik.de/conn/ServiceInformation/v2.0">
