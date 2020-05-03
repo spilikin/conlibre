@@ -21,12 +21,12 @@ gradle bootRun
 curl -i http://localhost:8080/connector.sds
 ----
 
-[source,xml]
+[source,xml,linenums,highlight=2..5]
 ----
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:ConnectorServices xmlns="http://ws.gematik.de/int/version/ProductInformation/v1.1" xmlns:ns2="http://ws.gematik.de/conn/ServiceDirectory/v3.1" xmlns:ns3="http://ws.gematik.de/conn/ServiceInformation/v2.0">
   <ns2:TLSMandatory>false</ns2:TLSMandatory>
-  <ns2:ClientAutMandatory>false</ns2:ClientAutMandatory>
+  <ns2:ClientAutMandatory>false</ns2:ClientAutMandatory> <1>
   <ns3:ServiceInformation>
     <ns3:Service Name="AuthSignatureService">
       <ns3:Versions>
