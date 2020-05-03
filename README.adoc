@@ -8,7 +8,7 @@ gradle bootRun
 ----
 
 .Access ServiceDirectory
-____
+----
 curl -i http://localhost:8080/connector.sds
 ----
 
@@ -23,39 +23,14 @@ sdk install java
 sdk install gradle
 ----
 
-=== Self-signed certificates
-
+.Generate RSA self signed certificates
 ----
 openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 1825
 openssl pkcs8 -topk8 -inform PEM -in key.pem -out privatekey.pem -nocrypt
 ----
 
+.TODO: Generate ECC self signed certificates
+----
+openssl ...
+----
 
-
-Using the Emulator
-==================================
-
-Quickstart
-----------
-
-```
-    cd /tmp
-    git clone git@github.com:spilikin/telematik-jaxws.git
-    (cd telematik-jaxws;mvn clean install)
-    git clone git@github.com:spilikin/telematik-konemu.git
-    cd telematik-konemu
-    mvn clean test
-    mvn spring-boot:run
-```
-
-Start the Emulator from command line
-------------------------------------
-```
-    mvn spring-boot:run
-```
-
-Get Service Directory
----------------------
-```
-    curl -i http://localhost:9095/connector.sds
-```
