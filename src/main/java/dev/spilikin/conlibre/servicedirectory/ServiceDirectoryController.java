@@ -6,41 +6,32 @@ import dev.spilikin.conlibre.ServiceHelper;
 import dev.spilikin.conlibre.Version;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.jws.WebService;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.net.*;
 import java.util.Map;
 
 @RestController
 public class ServiceDirectoryController {
-    private ConnectorServices connectorServices;
-
-    @Value("${server.port}")
-    private int serverPort;
-
-
-    public ServiceDirectoryController() {
-        connectorServices = new ConnectorServices();
-        connectorServices.setServiceInformation(new ServicesType());
-    }
+    @Resource
+    private ApplicationContext applicationContext;
 
     @RequestMapping(value="/connector.sds", produces= MediaType.APPLICATION_XML_VALUE)
-    public ConnectorServices serviceDirectory() {
-        return connectorServices;
-    }
+    public ConnectorServices serviceDirectory(HttpServletRequest request) throws MalformedURLException, URISyntaxException {
+        ConnectorServices connectorServices = new ConnectorServices();
+        connectorServices.setServiceInformation(new ServicesType());
+        URI requestURL = new URI(request.getRequestURL().toString());
+        URI baseURI = new URI(requestURL.getScheme(), null, requestURL.getHost(), requestURL.getPort(), "/soap-api/", null, null);
 
-    @EventListener
-    public void handleContextRefresh(ContextRefreshedEvent contextRefreshedEvent) throws UnknownHostException, URISyntaxException, MalformedURLException {
-
-        String serverHost = InetAddress.getLocalHost().getHostAddress();
-        URI baseURI = new URI("http", null, serverHost, serverPort, "/soap-api/", null, null);
-
-        ApplicationContext applicationContext = (ApplicationContext)contextRefreshedEvent.getSource();
         Map<String, Object> webServices = applicationContext.getBeansWithAnnotation(WebService.class);
         for (Object webservice:webServices.values()) {
             ServiceHelper.ServiceInfo serviceInfo = ServiceHelper.info(webservice);
@@ -57,8 +48,7 @@ public class ServiceDirectoryController {
             connectorServices.getServiceInformation().getService().add(service);
         }
 
-        return;
+        return connectorServices;
     }
-
 
 }

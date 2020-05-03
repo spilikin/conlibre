@@ -8,17 +8,6 @@ import java.net.URL;
 public class TestSoftcard {
 
     @Test
-    public void testCryproUtil() throws Exception {
-        CryproUtil cryptoUtil = new CryproUtil();
-        Object c1 = CryproUtil.readX509CertificateDER(new URL("file:./config/cards/smc-b_1/MF/DF.ESIGN/EF.C.HCI.AUT.R2048.cer"));
-        Object c2 = CryproUtil.readX509CertificatePEM(new URL("file:./config/cards/smc-b_2/MF/DF.ESIGN/EF.C.HCI.AUT.R2048.cer.pem"));
-        assertEquals(c1, c2);
-        Object k1 = CryproUtil.readPrivateKeyDER(new URL("file:./config/cards/smc-b_1/MF/DF.ESIGN/PrK.HCI.AUT.R2048.key"));
-        Object k2 = CryproUtil.readPrivateKeyPEM(new URL("file:./config/cards/smc-b_2/MF/DF.ESIGN/PrK.HCI.AUT.R2048.key.pem"));
-        assertEquals(k1, k2);
-    }
-
-    @Test
     public void testSoftcardLowLevel() throws Exception {
         Softcard smc_b_1 = new Softcard("smc_b_1");
 
