@@ -1,12 +1,13 @@
+= Con Libre: simple API simulator for gematik Konnektor
 ifdef::env-github[]
-:imagesdir: https://raw.githubusercontent.com/spilikin/telematik-konemu/master/
+:imagesdir:https://raw.githubusercontent.com/spilikin/telematik-konemu/master/
 endif::[]
 ifndef::env-github[]
 :imagesdir: ./
 endif::[]
 
-= Con Libre: simple API simulator for gematik Konnektor
-:image:mask.png[Lucha Libre, width=20%, float=right]
+
+image:mask.png[width=20%]
 
 == Usage
 
