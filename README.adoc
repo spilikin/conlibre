@@ -183,7 +183,7 @@ curl http://localhost:8080/soap-api/CardService/8.1.2 \
 ----
 
 
-== Call ExternalAuthenticate to sign512 bit challenge with RSA
+== Call ExternalAuthenticate to sign 512 bit challenge with RSA
 
 === Request
 
@@ -235,7 +235,7 @@ curl http://localhost:8080/soap-api/AuthSignatureService/7.4.0 \
         <Result>OK</Result>
       </Status>
       <ns3:SignatureObject>
-        <ns3:Base64Signature Type="urn:ietf:rfc:3447">ZUE4ak8zaHE2R1Y1Mml4WGJqdXBYbitGcitoMmxOTUVDa2MvVGIzN1ZBUTRjbWlHTnY1UEpVNzFYS3EvM3hqWlNQbFc4ZFpaU0dmL0g2OGw0WVNoeVFvaHVhNVljdzAvZkFWOWRyNkh6Qk16d3RUWVhoM0w3Z0R6UmtOVldTbU96QTI1QmMrQ05yVjRvSklyR3dvLzJrSmJTbFhSNXQzcHB6a3M2dHp1dE82d2MrQnpoRUdGTGYxTEFlUWs5cjgwWGxHV3FWRE1XZ1ZFQmkrMEYxUUJyQXNYNXBOSHk1NjBadzFSUm5EdTZscXVVZlM2T2JvYi8rWDJrRmg3eDdlcHAzN0wyUzFMUGwvcEwwZEN4Uk9Dc0UwVUJyaW9GTmlacjFIbmNYZE9xd0hRTTRqbmpDSXl1RFlaL1NXNlZwNytZM3NEMmhLVE8valN5ZU1BbGZFUWVnPT0=</ns3:Base64Signature>
+        <ns3:Base64Signature Type="urn:ietf:rfc:3447">Z3BEWFNIMzQ3WFNWbXR2QWlvd0tadlphdmRyZEdIdGx1ejhRRGY4cXNBYnMzbGUvYUV6dkJEK294Z0N5UFJLcmhWdHJwMHVZQWh5aXV4MVVOdlpxak9tMkNiZC9vTXZVcUkxRWpSdEFZVWdzbUVXRFlxOThTcVN2RUlIMmhIMGdrSFB5TEU1MmhRdHJKVG9ZdmhndE5OZkFHNjJNRWJuanczdUtVSXEzQ3BjMTdhYVVRN3JtWEdHWURmWjJsUDUyT3Z0ZlJNOE03T3o2T3NlbjVLZzJwM2RoeCtyRVFQTU9aeTVLRDcxR3d6c3FocDVTd085SGtEQ0lkeUtZZ0dsNHgzbFRESCtpVjJZOWZvNnVIS1RoSCtnakJzendDMXNxM3I4VFpTb3hiOHpRZzQ1cW1KOU83cCtTUHhsTG4rU3hWTDVKaWU2aC9oSFVDYnpjUnJZZUd3PT0=</ns3:Base64Signature>
       </ns3:SignatureObject>
     </ns4:ExternalAuthenticateResponse>
   </soap:Body>
