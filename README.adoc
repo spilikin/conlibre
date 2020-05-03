@@ -26,12 +26,12 @@ curl -i http://localhost:8080/connector.sds
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:ConnectorServices xmlns="http://ws.gematik.de/int/version/ProductInformation/v1.1" xmlns:ns2="http://ws.gematik.de/conn/ServiceDirectory/v3.1" xmlns:ns3="http://ws.gematik.de/conn/ServiceInformation/v2.0">
   <ns2:TLSMandatory>false</ns2:TLSMandatory>
-  <ns2:ClientAutMandatory>false</ns2:ClientAutMandatory> <1>
+  <ns2:ClientAutMandatory>false</ns2:ClientAutMandatory>
   <ns3:ServiceInformation>
     <ns3:Service Name="AuthSignatureService">
       <ns3:Versions>
         <ns3:Version TargetNamespace="http://ws.gematik.de/conn/AuthSignatureService/WSDL/v7.4" Version="7.4.0">
-          <ns3:Endpoint Location="http://localhost:8080/soap-api/AuthSignatureService/7.4.0"/>
+          <ns3:Endpoint Location="http://localhost:8080/soap-api/AuthSignatureService/7.4.0"/> <1>
         </ns3:Version>
       </ns3:Versions>
     </ns3:Service>
@@ -60,6 +60,7 @@ curl -i http://localhost:8080/connector.sds
 </ns2:ConnectorServices>
 ----
 
+<1> URL of the AuthSignatureService
 
 == Development
 
