@@ -83,7 +83,7 @@ gradle bootRun
 |===
 |URI        |http://localhost:8080/soap-api/EventService/7.2.0
 |Method     |POST
-|HTTP Header `SOAPAction` | http://ws.gematik.de/conn/EventService/v7.2#GetCards
+|HTTP Header `SOAPAction` | `http://ws.gematik.de/conn/EventService/v7.2#GetCards`
 |Payload    |
 [source,xml]
 ----
@@ -129,6 +129,48 @@ curl http://localhost:8080/soap-api/EventService/7.2.0 \
     </ns3:GetCardsResponse>
   </soap:Body>
 </soap:Envelope>
+----
+
+== Verify PIN
+
+=== Request
+
+[cols="h,a"] 
+|===
+|URI        |http://localhost:8080/soap-api/CardService/8.1.2
+|Method     |POST
+|HTTP Header `SOAPAction` | `http://ws.gematik.de/conn/CardService/v8.1#VerifyPin`
+|Payload    |
+[source,xml]
+----
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap-env:Body>
+    <ns0:VerifyPin xmlns:ns0="http://ws.gematik.de/conn/CardService/v8.1">
+      <ns1:Context xmlns:ns1="http://ws.gematik.de/conn/ConnectorContext/v2.0">
+        <ns2:MandantId xmlns:ns2="http://ws.gematik.de/conn/ConnectorCommon/v5.0">MandantId</ns2:MandantId>
+        <ns3:ClientSystemId xmlns:ns3="http://ws.gematik.de/conn/ConnectorCommon/v5.0">ClientSystemId</ns3:ClientSystemId>
+        <ns4:WorkplaceId xmlns:ns4="http://ws.gematik.de/conn/ConnectorCommon/v5.0">WorkplaceId</ns4:WorkplaceId>
+      </ns1:Context>
+      <ns5:CardHandle xmlns:ns5="http://ws.gematik.de/conn/ConnectorCommon/v5.0">smc-b_2</ns5:CardHandle>
+      <ns6:PinTyp xmlns:ns6="http://ws.gematik.de/conn/CardServiceCommon/v2.0">PIN.SMC</ns6:PinTyp>
+    </ns0:VerifyPin>
+  </soap-env:Body>
+</soap-env:Envelope>
+----
+|CURL       |
+[source,bash]
+----
+curl http://localhost:8080/soap-api/CardService/8.1.2 \ 
+  -X POST \
+  --header 'SOAPAction: http://ws.gematik.de/conn/CardService/v8.1#VerifyPin' \
+  --data '<soap-env:Envelope>...'
+----
+
+=== Response
+
+[source,xml]
+----
+
 ----
 
 == Development
