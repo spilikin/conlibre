@@ -182,6 +182,60 @@ curl http://localhost:8080/soap-api/CardService/8.1.2 \
 </soap:Envelope>
 ----
 
+
+== Call ExternalAuthenticate to sign challenge
+
+=== Request
+
+[cols="h,a"] 
+|===
+|URI        |http://localhost:8080/soap-api/AuthSignatureService/7.4.0
+|Method     |POST
+|HTTP Header `SOAPAction` | +http://ws.gematik.de/conn/SignatureService/v7.4#ExternalAuthenticate+
+|Payload    |
+[source,xml]
+----
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap-env:Body>
+    <ns0:ExternalAuthenticate xmlns:ns0="http://ws.gematik.de/conn/SignatureService/v7.4">
+      <ns1:CardHandle xmlns:ns1="http://ws.gematik.de/conn/ConnectorCommon/v5.0">smc-b_2</ns1:CardHandle>
+      <ns2:Context xmlns:ns2="http://ws.gematik.de/conn/ConnectorContext/v2.0">
+        <ns3:MandantId xmlns:ns3="http://ws.gematik.de/conn/ConnectorCommon/v5.0">MandantId</ns3:MandantId>
+        <ns4:ClientSystemId xmlns:ns4="http://ws.gematik.de/conn/ConnectorCommon/v5.0">ClientSystemId</ns4:ClientSystemId>
+        <ns5:WorkplaceId xmlns:ns5="http://ws.gematik.de/conn/ConnectorCommon/v5.0">WorkplaceId</ns5:WorkplaceId>
+      </ns2:Context>
+      <ns0:OptionalInputs>
+        <ns6:SignatureType xmlns:ns6="urn:oasis:names:tc:dss:1.0:core:schema">urn:ietf:rfc:3447</ns6:SignatureType>
+        <ns0:SignatureSchemes>RSASSA-PKCS1-v1_5</ns0:SignatureSchemes>
+      </ns0:OptionalInputs>
+      <ns0:BinaryString>
+        <ns7:Base64Data xmlns:ns7="urn:oasis:names:tc:dss:1.0:core:schema">WVdKalpHVm1aMmhwYW10c2JXNXZjSEZ5YzNSMWRuZDRlWHBCUWtORVJVWT0=</ns7:Base64Data>
+      </ns0:BinaryString>
+    </ns0:ExternalAuthenticate>
+  </soap-env:Body>
+</soap-env:Envelope>
+----
+|CURL       |
+[source,bash]
+----
+curl http://localhost:8080/soap-api/AuthSignatureService/7.4.0 \ 
+  -X POST \
+  --header 'SOAPAction: http://ws.gematik.de/conn/SignatureService/v7.4#ExternalAuthenticate' \
+  --data '<soap-env:Envelope>...'
+----
+|===
+
+   Address: 
+    HttpMethod: POST
+    Content-Type: text/xml; charset=utf-8
+    ExchangeId: edd65233-3496-4d02-a1b5-00b04f613fe9
+    ServiceName: AuthSignatureServiceService
+    PortName: AuthSignatureServicePort
+    PortTypeName: AuthSignatureServicePortType
+    Headers: {SOAPAction="", Accept=*/*, host=localhost:8080, connection=keep-alive, content-type=text/xml; charset=utf-8, Content-Length=1176, accept-encoding=gzip, deflate, user-agent=Zeep/3.4.0 (www.python-zeep.org)}
+    Payload: 
+
+
 == Development
 
 === Toolchain installation
