@@ -8,6 +8,7 @@ import dev.spilikin.conlibre.softcard.FileSoftcardBuilder;
 import dev.spilikin.conlibre.softcard.Softcard;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
+import org.apache.cxf.ext.logging.LoggingFeature;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -41,7 +42,6 @@ public class App {
 		return new ServletRegistrationBean<>(new CXFServlet(), "/soap-api/*");
 	}
 
-	/*
 	@Bean
 	public LoggingFeature loggingFeature() {
 		LoggingFeature logFeature = new LoggingFeature();
@@ -49,7 +49,6 @@ public class App {
 		logFeature.initialize(springBus());
 		return logFeature;
 	}
-	 */
 
 	@Bean(name= Bus.DEFAULT_BUS_ID)
 	public SpringBus springBus() {
