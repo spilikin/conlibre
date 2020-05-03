@@ -171,7 +171,15 @@ curl http://localhost:8080/soap-api/CardService/8.1.2 \
 
 [source,xml]
 ----
-
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:VerifyPinResponse xmlns="http://ws.gematik.de/conn/ConnectorCommon/v5.0" xmlns:ns2="http://ws.gematik.de/conn/ConnectorContext/v2.0" xmlns:ns3="http://ws.gematik.de/conn/CardServiceCommon/v2.0" xmlns:ns4="http://ws.gematik.de/conn/CardService/v8.1" xmlns:ns5="http://ws.gematik.de/tel/error/v2.0" xmlns:ns6="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns7="http://www.w3.org/2000/09/xmldsig#" xmlns:ns8="http://ws.gematik.de/int/version/ProductInformation/v1.1" xmlns:ns9="urn:oasis:names:tc:SAML:1.0:assertion">
+      <Status/>
+      <ns3:PinResult>OK</ns3:PinResult>
+      <ns3:LeftTries>3</ns3:LeftTries>
+    </ns4:VerifyPinResponse>
+  </soap:Body>
+</soap:Envelope>
 ----
 
 == Development
