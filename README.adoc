@@ -1,6 +1,5 @@
 ifdef::env-github[]
-:imagesdir:
- https://gist.githubusercontent.com/
+:imagesdir:https://raw.githubusercontent.com/spilikin/telematik-konemu/master/
 :tip-caption: :bulb:
 :note-caption: :information_source:
 :important-caption: :heavy_exclamation_mark:
@@ -13,6 +12,8 @@ endif::[]
 
 
 = Con Libre: simple API simulator for gematik Konnektor
+
+:image:mask.png[Lucha Libre, width=30%]
 
 == Usage
 
