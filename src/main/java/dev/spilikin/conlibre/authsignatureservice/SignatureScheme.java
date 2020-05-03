@@ -1,4 +1,4 @@
-package emu.konauth.authsignatureservice;
+package dev.spilikin.conlibre.authsignatureservice;
 
 public enum SignatureScheme {
     RSASSA_PSS("RSASSA-PSS"),

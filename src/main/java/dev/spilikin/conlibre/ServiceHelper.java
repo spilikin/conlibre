@@ -1,4 +1,4 @@
-package emu.konauth;
+package dev.spilikin.conlibre;
 
 import javax.jws.WebService;
 

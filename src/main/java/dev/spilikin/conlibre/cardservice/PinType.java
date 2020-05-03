@@ -1,4 +1,4 @@
-package emu.konauth.cardservice;
+package dev.spilikin.conlibre.cardservice;
 
 public enum PinType {
     PIN_CH("PIN.CH"), PIN_SMC("PIN.SMC");

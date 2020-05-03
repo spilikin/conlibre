@@ -1,15 +1,15 @@
-package emu.konauth.eventservice;
+package dev.spilikin.conlibre.eventservice;
 
-import emu.konauth.ErrorMessage;
-import emu.konauth.KonnektorError;
-import emu.konauth.Version;
-import emu.softcard.Softcard;
-import telematik.ws.conn.cardservice.v8_1.CardInfoType;
-import telematik.ws.conn.cardservice.v8_1.Cards;
-import telematik.ws.conn.cardservicecommon.v2_0.CardTypeType;
-import telematik.ws.conn.eventservice.v7_2.*;
-import telematik.ws.conn.eventservice.wsdl.v7_2.EventServicePortType;
-import telematik.ws.conn.eventservice.wsdl.v7_2.FaultMessage;
+import de.gematik.ws.conn.cardservice.v8.CardInfoType;
+import de.gematik.ws.conn.cardservice.v8.Cards;
+import de.gematik.ws.conn.cardservicecommon.v2.CardTypeType;
+import de.gematik.ws.conn.eventservice.v7.*;
+import de.gematik.ws.conn.eventservice.wsdl.v7_2.EventServicePortType;
+import de.gematik.ws.conn.eventservice.wsdl.v7_2.FaultMessage;
+import dev.spilikin.conlibre.ErrorMessage;
+import dev.spilikin.conlibre.KonnektorError;
+import dev.spilikin.conlibre.Version;
+import dev.spilikin.conlibre.softcard.Softcard;
 
 import javax.annotation.Resource;
 import javax.jws.WebService;

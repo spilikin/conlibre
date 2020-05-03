@@ -1,17 +1,13 @@
-package emu.softcard;
+package dev.spilikin.conlibre.softcard;
 
-import junit.framework.TestCase;
-
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.net.URL;
-import java.security.Security;
 
-public class TestSoftcard extends TestCase {
-    @Override
-    protected void setUp() {
-        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
-    }
+public class TestSoftcard {
 
+    @Test
     public void testCryproUtil() throws Exception {
         CryproUtil cryptoUtil = new CryproUtil();
         Object c1 = CryproUtil.readX509CertificateDER(new URL("file:./config/cards/smc-b_1/MF/DF.ESIGN/EF.C.HCI.AUT.R2048.cer"));
@@ -22,6 +18,7 @@ public class TestSoftcard extends TestCase {
         assertEquals(k1, k2);
     }
 
+    @Test
     public void testSoftcardLowLevel() throws Exception {
         Softcard smc_b_1 = new Softcard("smc_b_1");
 

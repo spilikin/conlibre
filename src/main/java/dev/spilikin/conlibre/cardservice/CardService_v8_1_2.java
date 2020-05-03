@@ -1,17 +1,17 @@
-package emu.konauth.cardservice;
+package dev.spilikin.conlibre.cardservice;
 
-import emu.konauth.ErrorMessage;
-import emu.konauth.KonnektorError;
-import emu.konauth.Version;
-import emu.konauth.authsignatureservice.AuthSignatureService;
-import emu.softcard.Softcard;
+import de.gematik.ws.conn.cardservice.v8.*;
+import de.gematik.ws.conn.cardservice.wsdl.v8_1.CardServicePortType;
+import de.gematik.ws.conn.cardservice.wsdl.v8_1.FaultMessage;
+import de.gematik.ws.conn.cardservicecommon.v2.PinResponseType;
+import de.gematik.ws.conn.cardservicecommon.v2.PinResultEnum;
+import de.gematik.ws.conn.connectorcommon.v5.Status;
+import dev.spilikin.conlibre.ErrorMessage;
+import dev.spilikin.conlibre.KonnektorError;
+import dev.spilikin.conlibre.Version;
+import dev.spilikin.conlibre.authsignatureservice.AuthSignatureService;
+import dev.spilikin.conlibre.softcard.Softcard;
 import org.springframework.beans.factory.annotation.Autowired;
-import telematik.ws.conn.cardservice.v8_1.*;
-import telematik.ws.conn.cardservice.wsdl.v8_1_2.CardServicePortType;
-import telematik.ws.conn.cardservice.wsdl.v8_1_2.FaultMessage;
-import telematik.ws.conn.cardservicecommon.v2_0.PinResponseType;
-import telematik.ws.conn.cardservicecommon.v2_0.PinResultEnum;
-import telematik.ws.conn.connectorcommon.v5_0.Status;
 
 import javax.annotation.Resource;
 import javax.jws.WebService;

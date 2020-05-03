@@ -1,6 +1,6 @@
-package emu.konauth;
+package dev.spilikin.conlibre;
 
-import telematik.ws.common.error.v2_0.Error;
+import de.gematik.ws.tel.error.v2.Error;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
