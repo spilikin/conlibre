@@ -209,7 +209,7 @@ curl http://localhost:8080/soap-api/CardService/8.1.2 \
         <ns0:SignatureSchemes>RSASSA-PKCS1-v1_5</ns0:SignatureSchemes>
       </ns0:OptionalInputs>
       <ns0:BinaryString>
-        <ns7:Base64Data xmlns:ns7="urn:oasis:names:tc:dss:1.0:core:schema">VdKalpHVm1aMmhwYW10c2JXNXZjSEZ5YzNSMWRuZDRlWHBCUWtORVJVWkhTRWxLUzB4TlRrOVFVVkpUVkZWV1YxaFpXakF4TWpNME5UWTNPRGxoWWc9PQ==</ns7:Base64Data>
+        <ns7:Base64Data xmlns:ns7="urn:oasis:names:tc:dss:1.0:core:schema">WVdKalpHVm1aMmhwYW10c2JXNXZjSEZ5YzNSMWRuZDRlWHBCUWtORVJVWkhTRWxLUzB4TlRrOVFVVkpUVkZWV1YxaFpXakF4TWpNME5UWTNPRGxoWWc9PQ==</ns7:Base64Data>
       </ns0:BinaryString>
     </ns0:ExternalAuthenticate>
   </soap-env:Body>
