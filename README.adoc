@@ -1,3 +1,17 @@
+ifdef::env-github[]
+:imagesdir:
+ https://gist.githubusercontent.com/
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+ifndef::env-github[]
+:imagesdir: ./
+endif::[]
+
+
 = Con Libre: simple API simulator for gematik Konnektor
 
 == Usage
