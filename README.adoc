@@ -165,6 +165,7 @@ curl http://localhost:8080/soap-api/CardService/8.1.2 \
   --header 'SOAPAction: http://ws.gematik.de/conn/CardService/v8.1#VerifyPin' \
   --data '<soap-env:Envelope>...'
 ----
+|===
 
 === Response
 
