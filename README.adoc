@@ -1,5 +1,5 @@
 ifdef::env-github[]
-:imagesdir:https://raw.githubusercontent.com/spilikin/telematik-konemu/master/
+:imagesdir: https://raw.githubusercontent.com/spilikin/telematik-konemu/master/
 endif::[]
 ifndef::env-github[]
 :imagesdir: ./
