@@ -19,9 +19,12 @@ gradle bootRun
 == Access ServiceDirectory
 
 === Request
-----
-curl -i http://localhost:8080/connector.sds
-----
+[cols="h,m"] 
+|===
+|URI        |http://localhost:8080/connector.sds
+|Method     |GET
+|CURL       |curl -i http://localhost:8080/connector.sds
+|===
 
 === Response
 [source,xml]
@@ -67,16 +70,13 @@ curl -i http://localhost:8080/connector.sds
 
 === Request
 
-   Address: http://localhost:8080/soap-api/EventService/7.2.0
-    HttpMethod: POST
-    Content-Type: text/xml; charset=utf-8
-    ExchangeId: e29258d9-4c99-4e82-baa9-7be959b4b0c0
-    ServiceName: EventServiceService
-    PortName: EventServicePort
-    PortTypeName: EventServicePortType
-    Headers: {SOAPAction="http://ws.gematik.de/conn/EventService/v7.2#GetCards", Accept=*/*, host=localhost:8080, connection=keep-alive, content-type=text/xml; charset=utf-8, Content-Length=703, accept-encoding=gzip, deflate, user-agent=Zeep/3.4.0 (www.python-zeep.org)}
-    Payload: 
-
+[cols="h,m"] 
+|===
+|URI        |http://localhost:8080/soap-api/EventService/7.2.0
+|Method     |POST
+|HTTP Header `SOAPAction` |http://ws.gematik.de/conn/EventService/v7.2#GetCards
+|CURL       | smth
+|===
 
 ==== Payload
 [source,xml]
