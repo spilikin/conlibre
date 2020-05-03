@@ -21,6 +21,46 @@ gradle bootRun
 curl -i http://localhost:8080/connector.sds
 ----
 
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ConnectorServices xmlns="http://ws.gematik.de/int/version/ProductInformation/v1.1" xmlns:ns2="http://ws.gematik.de/conn/ServiceDirectory/v3.1" xmlns:ns3="http://ws.gematik.de/conn/ServiceInformation/v2.0">
+  <ns2:TLSMandatory>false</ns2:TLSMandatory>
+  <ns2:ClientAutMandatory>false</ns2:ClientAutMandatory>
+  <ns3:ServiceInformation>
+    <ns3:Service Name="AuthSignatureService">
+      <ns3:Versions>
+        <ns3:Version TargetNamespace="http://ws.gematik.de/conn/AuthSignatureService/WSDL/v7.4" Version="7.4.0">
+          <ns3:Endpoint Location="http://localhost:8080/soap-api/AuthSignatureService/7.4.0"/>
+        </ns3:Version>
+      </ns3:Versions>
+    </ns3:Service>
+    <ns3:Service Name="EventService">
+      <ns3:Versions>
+        <ns3:Version TargetNamespace="http://ws.gematik.de/conn/EventService/WSDL/v7.2" Version="7.2.0">
+          <ns3:Endpoint Location="http://localhost:8080/soap-api/EventService/7.2.0"/>
+        </ns3:Version>
+      </ns3:Versions>
+    </ns3:Service>
+    <ns3:Service Name="CardService">
+      <ns3:Versions>
+        <ns3:Version TargetNamespace="http://ws.gematik.de/conn/CardService/WSDL/v8.1" Version="8.1.1">
+          <ns3:Endpoint Location="http://localhost:8080/soap-api/CardService/8.1.1"/>
+        </ns3:Version>
+      </ns3:Versions>
+    </ns3:Service>
+    <ns3:Service Name="CardService">
+      <ns3:Versions>
+        <ns3:Version TargetNamespace="http://ws.gematik.de/conn/CardService/WSDL/v8.1" Version="8.1.2">
+          <ns3:Endpoint Location="http://localhost:8080/soap-api/CardService/8.1.2"/>
+        </ns3:Version>
+      </ns3:Versions>
+    </ns3:Service>
+  </ns3:ServiceInformation>
+</ns2:ConnectorServices>
+----
+
+
 == Development
 
 === Toolchain installation
