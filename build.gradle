@@ -33,6 +33,7 @@ dependencies {
 	implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
 	implementation 'org.bouncycastle:bcpkix-jdk15on:1.65'
 	implementation 'org.apache.cxf:cxf-spring-boot-starter-jaxws:3.3.6'
+	implementation 'org.apache.cxf:cxf-rt-features-logging:3.3.6'
 	implementation 'com.sun.activation:javax.activation:1.2.0'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
