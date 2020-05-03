@@ -70,16 +70,16 @@ gradle bootRun
 
 === Request
 
-[cols="h,m"] 
+[cols="h,a"] 
 |===
 |URI        |http://localhost:8080/soap-api/EventService/7.2.0
 |Method     |POST
+|HTTP Header `SOAPAction` | http://ws.gematik.de/conn/EventService/v7.2#GetCards
 |Payload    |sm
-|CURL       |smth
+|CURL       |curl http://localhost:8080/soap-api/EventService/7.2.0 -X POST --header 'SOAPAction: http://ws.gematik.de/conn/EventService/v7.2#GetCards' --data '<soap-env:Envelope>...'
 |===
 
 
-|HTTP Header `SOAPAction` | http://ws.gematik.de/conn/EventService/v7.2#GetCards
 
 
 [source,xml]
