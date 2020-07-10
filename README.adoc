@@ -8,6 +8,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 ifndef::env-github[]
+:source-highlighter: highlight.js
 :imagesdir: ./
 endif::[]
 :toc:
@@ -21,7 +22,7 @@ toc::[]
 == Usage
 
 ----
-gradle clean 
+gradle clean
 gradle bootRun
 ----
 
@@ -36,7 +37,7 @@ gradle bootRun
 |===
 
 === Response
-[source,xml]
+[source,xml,linenums,highlight='7-9']
 ----
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:ConnectorServices xmlns="http://ws.gematik.de/int/version/ProductInformation/v1.1" xmlns:ns2="http://ws.gematik.de/conn/ServiceDirectory/v3.1" xmlns:ns3="http://ws.gematik.de/conn/ServiceInformation/v2.0">
@@ -264,3 +265,14 @@ openssl pkcs8 -topk8 -inform PEM -in key.pem -out privatekey.pem -nocrypt
 openssl ...
 ----
 
+== Deployment
+
+.Building Docker image
+---
+docker build -t conlibre .
+---
+
+.Running Docker image
+---
+docker run --mount type=bind,source="$(pwd)"/config,target=/conlibre/config conlibre
+---
