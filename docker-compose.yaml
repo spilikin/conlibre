@@ -1,0 +1,8 @@
+version: "3"
+services: 
+  conlibre:
+    image: spilikin/conlibre
+    build: .
+    ports:
+      - target: 8080
+        published: 8080
